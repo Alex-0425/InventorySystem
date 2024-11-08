@@ -1,0 +1,106 @@
+#include <iostream>
+using namespace std;
+
+
+
+class Item {
+public:
+    int Coke = 5;
+    int Peanuts = 5;
+    int Chocolate = 5;
+
+};
+
+class Inventory: public Item {
+public:
+    void Add(int in) {
+        switch (in) {
+        case 1:
+            cout << "Coke inventory restocked" << endl;
+            if (Coke < 10) {
+                Coke++;
+            }
+            break;
+        case 2:
+            cout << "Peanuts inventory restocked" << endl;
+            if (Peanuts < 10) {
+                Peanuts++;
+            }
+            break;
+        case 3:
+            cout << "Chocolate inventory restocked" << endl;
+            if (Chocolate < 10){
+                Chocolate++;
+            }
+            break;
+        }
+
+    }
+
+    void Remove(int in) {
+        switch (in) {
+        case 1:
+            cout << "Coke item removed" << endl;
+            if (Coke > 0) {
+                Coke--;
+            }
+            break;
+        case 2:
+            cout << "Peanuts item removed" << endl;
+            if (Peanuts > 0) {
+                Peanuts--;
+            }
+            break;
+        case 3:
+            cout << "Chocolate item removed" << endl;
+            if (Chocolate > 0) {
+                Chocolate--;
+            }
+            break;
+        }
+
+    }
+};
+
+class Store: public Inventory {
+public:
+    string choice;
+    int item_choice;
+    void ItemChoice() {
+        while (true) {
+            cout << "\n1) Coke" << endl;
+            cout << "2) Peanuts" << endl;
+            cout << "3) Chocolate" << endl;
+            cout << "Enter item Choice: " << endl;
+            cin >> item_choice;
+
+            if (item_choice == 0) {
+                break;
+            }
+
+            System();
+        }
+    }
+
+    void System() {
+        cout << "Would you like to Add or Remove an item? (Add or Remove)" << endl;
+        cin >> choice;
+        if (choice == "Add") {
+
+            Add(item_choice);
+        }
+        else if (choice == "Remove") {
+            Remove(item_choice);
+        }
+    }
+
+
+};
+
+int main(){
+    Store S;
+
+    S.ItemChoice();
+
+    
+}
